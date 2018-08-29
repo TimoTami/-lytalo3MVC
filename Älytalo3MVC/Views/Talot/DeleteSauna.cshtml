@@ -1,0 +1,60 @@
+﻿@model Älytalo3MVC.Models.Sauna
+
+@{
+    ViewBag.Title = "DeleteSauna";
+}
+
+<h2>DeleteSauna</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Sauna</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SaunanNimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaunanNimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaunanTila)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaunanTila)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaunanNykyLampotila)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaunanNykyLampotila)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Talo.TalonNimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Talo.TalonNimi)
+        </dd>
+        <dd>
+            @Html.HiddenFor(model => model.TaloID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        @Html.ActionLink("Takaisin", "Timo2", new { id = Model.TaloID })
+        <input type="submit" value="Poista" class="btn btn-default" />
+
+    </div>
+    }
+</div>

@@ -1,0 +1,26 @@
+﻿@model Älytalo3MVC.Models.Talo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Talo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TalonNimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TalonNimi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TaloID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

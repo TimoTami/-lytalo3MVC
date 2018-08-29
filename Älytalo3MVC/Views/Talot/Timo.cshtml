@@ -1,0 +1,357 @@
+﻿@*@model IEnumerable <Älytalo3MVC.ViewModel.TalonTiedotViewModel>
+
+    @{
+        ViewBag.Title = "Timo";
+    }
+
+    <h2>Timon ja Pumba</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TalonNimi)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.SaunanNimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SaunanNykyLampotila)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SaunanTila)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.HuoneenNimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TalonNykyLampotila)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TalonTavoiteLampotila)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ValonNimi)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValonMaara)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValonTila)
+            </th>
+            <th></th>
+        </tr>
+
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TalonNimi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaunanNimi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaunanNykyLampotila)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaunanTila)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ValonNimi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValonMaara)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValonTila)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.HuoneenNimi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TalonNykyLampotila)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TalonTavoiteLampotila)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TaloID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TaloID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TaloID })
+            </td>
+        </tr>
+    }
+
+</table>*@
+
+
+
+
+@model  IEnumerable<Älytalo3MVC.ViewModel.TalonTiedotViewModel>
+
+@{
+    ViewBag.Title = "Timo";
+}
+
+@*<h2>TalonTiedotEdit</h2>*@
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="container">
+    @*@Html.Raw(ViewBag.TalonNimi)*@
+    @*<div class="row">
+        <h4>@Html.DisplayNameFor(model => model.TalonNimi)</h4>
+        <hr />
+    </div>
+
+    <div id="valodiv" div class="col-sm-3 col-sm-offset-1">
+        <h1> Valo</h1>
+        <p>@Html.ActionLink("Lisää uusi valo", "UusiValo") </p>
+
+        <br>
+        @Html.DisplayNameFor(model => model.ValonNimi)
+        <br>
+        <br>
+        @Html.DisplayNameFor(model => model.ValonTila)
+        <br>
+        <br>
+        @Html.DisplayNameFor(model => model.ValonMaara)
+        <br>
+    </div>
+
+    <div id="saunadiv" div class="col-sm-3 col-sm-offset-1">
+        <h1> Sauna</h1>
+        <div class="row">
+            <div class="col-sm-4">
+                <input type="button" value="Lisää uusi sauna" class="btn btn-default" />
+            </div>
+        </div>
+        <p>@Html.ActionLink("Lisää uusi sauna", "UusiSauna") </p>
+        <br>
+        @Html.DisplayNameFor(model => model.SaunanNimi)
+        <br>
+        <br>
+        @Html.DisplayNameFor(model => model.SaunanNykyLampotila)
+        <br>
+        <br>
+        @Html.DisplayNameFor(model => model.SaunanTila)
+        <br>
+    </div>
+
+    <div id="lammitysdiv" div class="col-sm-3 col-sm-offset-1">
+        <h1> Lämmitys</h1>
+        <p>@Html.ActionLink("Lisää uusi huoneenlämmitys", "UusiHuone") </p>
+        <br>
+        @Html.DisplayNameFor(model => model.HuoneenNimi)
+        <br>
+        <br>
+        @Html.DisplayNameFor(model => model.TalonNykyLampotila)
+        <br>
+        <br>
+        @Html.DisplayNameFor(model => model.TalonTavoiteLampotila)
+        <br>
+    </div>*@
+
+
+    @foreach (var item in Model)
+    {
+        <div class="container">
+            <div class="row">
+                <h1>@Html.DisplayFor(modelItem =>  item.TalonNimi)</h1>
+                <br>
+                <br>
+
+                <div class="col-sm-4 ">
+                    <h4> Valo</h4>
+                    <br>
+                    <p>@Html.ActionLink("Lisää uusi valo", "UusiValo", new { id = item.TaloID }) |</p>
+                    <br>
+                    <div class="col-sm-4 ">
+                        @Html.DisplayName("Valon nimi")
+                        <br>
+                        <br>
+                        @Html.DisplayFor(modelItem => item.ValonNimi)
+                        <br>
+                        <br>
+                    </div>
+
+                    <div class="col-sm-4 ">
+                        @Html.DisplayName("Valon määrä")
+                        <br>
+                        <br>
+                        @Html.DisplayFor(modelItem => item.ValonMaara)
+                        <br>
+                        <br>
+                    </div>
+
+                    <div class="col-sm-4 ">
+                        @Html.DisplayName("Valon tila")
+                        <br>
+                        <br>
+                        @Html.DisplayFor(modelItem => item.ValonTila)
+                        <br>
+                        <br>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 ">
+                    <h4> Sauna</h4>
+                    <br>
+                    <p>@Html.ActionLink("Lisää uusi sauna", "UusiSauna", new { id = item.TaloID }) </p>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="col-sm-4 ">
+                        @Html.DisplayName("Saunan nimi")
+                        <br>
+                        <br>
+                        @Html.DisplayFor(modelItem => item.SaunanNimi)
+                        <br>
+                        <br>
+                    </div>
+
+                    <div class="col-sm-4 ">
+                        @Html.DisplayName("Saunan tila")
+                        <br>
+                        <br>
+                        @Html.DisplayFor(modelItem => item.SaunanTila)
+                        <br>
+                        <br>
+                    </div>
+
+                    <div class="col-sm-4 ">
+                        @Html.DisplayName("Saunan lämpötila")
+                        <br>
+                        <br>
+                        @Html.DisplayFor(modelItem => item.SaunanNykyLampotila)
+                        <br>
+                        <br>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 ">
+                    <h4> Lämmitys</h4>
+                    <br>
+                    <p>@Html.ActionLink("Lisää uusi huoneen lämmitys", "UusiLampo", new { id = item.TaloID }) | </p>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="col-sm-4 ">
+                        @Html.DisplayName("Huoneen nimi")
+                        <br>
+                        <br>
+                        @Html.DisplayFor(modelItem => item.HuoneenNimi)
+                        <br>
+                        <br>
+                    </div>
+
+                    <div class="col-sm-4 ">
+                        @Html.DisplayName("Huoneen lämpötila")
+                        <br>
+                        <br>
+                        @Html.DisplayFor(modelItem => item.TalonNykyLampotila)
+                        <br>
+                        <br>
+                    </div>
+
+                    <div class="col-sm-4 ">
+                        @Html.DisplayName("Huoneen tavoitelämpötila")
+                        <br>
+                        <br>
+                        @Html.DisplayFor(modelItem => item.TalonTavoiteLampotila)
+                        <br>
+                        <br>
+                    </div>
+                </div>
+
+                @*<div class="col-sm-1"/>
+        <br>
+        @Html.DisplayFor(modelItem => item.SaunanNimi)
+        <br>
+        <div />
+        <>
+        @Html.DisplayFor(modelItem => item.SaunanNykyLampotila)
+        </>
+        <>
+        @Html.DisplayFor(modelItem => item.SaunanTila)
+        </>
+
+
+
+        <>
+        @Html.DisplayFor(modelItem => item.HuoneenNimi)
+        </>
+        <>
+        @Html.DisplayFor(modelItem => item.TalonNykyLampotila)
+        </>
+        <>
+        @Html.DisplayFor(modelItem => item.TalonTavoiteLampotila)
+        </>*@
+
+
+            </div>
+            </div>
+
+    }
+</div>
+}
+
+
+
+                    @*<div class="form-group">
+                @Html.LabelFor(model => model.ValoID, "ValoID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ValoID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ValoID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SaunaID, "SaunaID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("SaunaID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SaunaID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TaloLampoID, "TaloLampoID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("TaloLampoID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TaloLampoID, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+
+                @*</div>
+                <div class="row form-group">
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </div>*@
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

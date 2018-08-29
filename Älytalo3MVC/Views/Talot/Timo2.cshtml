@@ -1,0 +1,243 @@
+﻿<style>
+ 
+
+    .container
+    {
+        max-width: 1700px;
+        min-width: 690px;
+        width: 100%;  
+    }
+    .container-fluid {
+        border: 1px solid BurlyWood;
+        margin: 2px;
+        padding: 5px;
+    }
+    .container-fluid-pad {
+        border: 1px solid orange;
+        margin: 1px;
+        padding-bottom:2px;
+    }
+    .pad{
+        padding-top:1px;
+        padding-bottom:1px;
+    }
+    .btn-toolbar {
+        color: #666699;
+    }
+    /*.col-container {
+        display: table; 
+        width: 100%; 
+    }
+    .col {
+        display: table-cell; 
+    }*/
+    
+</style>
+
+@model IEnumerable<Älytalo3MVC.ViewModel.TalonTiedotViewModel>
+    @{ 
+
+        var tamaTaloID = ViewBag.TamaTaloID;
+        ViewBag.taaTaloID = tamaTaloID;
+    }
+
+<div class="container">
+    @{
+        ViewBag.Title = "Timo2";
+    }
+
+    <h1>@Html.Raw(ViewBag.TalonNimi)</h1>
+
+
+    @*<div class="container-fluid,text-nowrap, col-xs-12">*@
+    
+    <div class="row col-lg-12">
+
+        <div class="row col-xs-4">
+            <h3>Valot</h3>
+            <br>
+            <p>@Html.ActionLink("Lisää uusi valo", "UusiValo", new { id = tamaTaloID }, new { @class = "btn btn-primary" }) </p>
+            <br>
+            @*<strong>@Html.DisplayName("Valot")</strong>*@
+            <div class="container-fluid col-md-12">
+
+                <div class=" col-md-4">
+                    <strong>@Html.DisplayName("Valon nimi")</strong>
+                </div>
+
+                <div class=" col-md-4">
+                    <strong> @Html.DisplayName("On/Off")</strong>
+                </div>
+
+                <div class=" col-md-4">
+                    <strong>@Html.DisplayName("Valon teho")</strong>
+                </div>
+
+            </div>
+        </div>
+        <div class="row col-xs-4">
+            <h3>Saunat</h3>
+            <br>
+            <p>@Html.ActionLink("Lisää uusi sauna", "UusiSauna", new { id = tamaTaloID }, new { @class = "btn btn-primary" }) </p>
+            <br>
+            @*<strong>@Html.DisplayName("Sauna")</strong>*@
+            <div class="container-fluid col-md-12">
+
+                <div class=" col-md-4">
+                    <strong>@Html.DisplayName("Saunan nimi")</strong>
+                </div>
+                <div class=" col-md-4">
+                    <strong>@Html.DisplayName("On/Off")</strong>
+                </div>
+                <div class=" col-md-4">
+                    <strong>@Html.DisplayName("Lämpötila")</strong>
+                </div>
+            </div>
+        </div>
+        <div class="row col-xs-4">
+            <h3>Huonelämmitykset</h3>
+            <br>
+            <p>@Html.ActionLink("Lisää uusi huoneen lämmitys", "UusiLampo", new { id = tamaTaloID }, new { @class = "btn btn-primary" })  </p>
+            <br>
+            @*<strong>@Html.DisplayName("Lämmitys")</strong>*@
+            <div class="container-fluid col-md-12">
+
+                <div class=" col-md-4">
+                    <strong>@Html.DisplayName("Huoneen nimi")</strong>
+                </div>
+                <div class=" col-md-4">
+                    <strong>@Html.DisplayName("Lämpötila")</strong>
+                </div>
+                <div class=" col-md-4">
+                    <strong>@Html.DisplayName("Tavoite lämpö")</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @*@foreach (var item in Model)
+        {*@
+    <div class="row col-lg-12">
+        <div class="row col-xs-4">
+            @foreach (var item in Model)
+            {
+                if (item.ValonNimi != null)
+                {
+                    <div class="container-fluid col-md-12">
+
+                        <div class=" col-md-4">
+                            @Html.DisplayFor(modelItem => item.ValonNimi)
+                        </div>
+
+                        <div class=" col-md-4">
+                            @Html.DisplayFor(modelItem => item.ValonTila)
+                        </div>
+
+                        <div class=" col-md-4">
+                            @Html.DisplayFor(modelItem => item.ValonMaara)%
+                        </div>
+                        <div class="row col-xs-12">
+                            <div class=" col-xs-1">
+                                <a href="@Url.Action("EditValo", new {id = item.ValoID })">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
+                            </div>
+
+                            <div class=" col-xs-1">
+
+                                <a href="@Url.Action("DeleteValo", new {id = item.ValoID })">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+        <div class="row col-xs-4">
+            @foreach (var item in Model)
+            {
+                if (item.SaunanNimi != null)
+                {
+                    <div class="container-fluid col-md-12">
+
+                        <div class=" col-md-4">
+                            @Html.DisplayFor(modelItem => item.SaunanNimi)
+                        </div>
+
+                        <div class=" col-md-4">
+                            @Html.DisplayFor(modelItem => item.SaunanTila)
+                        </div>
+
+                        <div class=" col-md-4">
+                            @Html.DisplayFor(modelItem => item.SaunanNykyLampotila)°C
+                        </div>
+                        <div class="row col-xs-12">
+                            <div class=" col-xs-1">
+                                <a href="@Url.Action("EditSauna", new {id = item.SaunaID })">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
+                            </div>
+
+                            <div class=" col-xs-1">
+
+                                <a href="@Url.Action("DeleteSauna", new {id = item.SaunaID })">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        <div class="row col-xs-4">
+            @foreach (var item in Model)
+            {
+                if (item.HuoneenNimi != null)
+                {
+                    <div class="container-fluid col-md-12">
+
+                        <div class=" col-md-4">
+                            @Html.DisplayFor(modelItem => item.HuoneenNimi)
+                        </div>
+
+                        <div class="pad col-md-4">
+                            @Html.DisplayFor(modelItem => item.TalonNykyLampotila)°C
+                        </div>
+
+                        <div class=" col-md-4">
+                            @Html.DisplayFor(modelItem => item.TalonTavoiteLampotila)°C
+                        </div>
+                        <div class="row col-xs-12">
+                            <div class=" col-xs-1">
+                                <a href="@Url.Action("EditLampo", new {id = item.TaloLampoID })">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
+                            </div>
+
+                            <div class=" col-xs-1">
+
+                                <a href="@Url.Action("DeleteLampo", new {id = item.TaloLampoID })">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        
+    </div>
+    <div class="row col-md-12">
+        <p>
+            <br>
+            <a href="@Url.Action("Index")" class="btn btn-toolbar" role="button">Takaisin taloihin</a>
+        </p>
+
+    </div>
+</div>

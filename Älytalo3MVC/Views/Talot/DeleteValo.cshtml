@@ -1,0 +1,60 @@
+﻿@model Älytalo3MVC.Models.Valo
+
+@{
+    ViewBag.Title = "DeleteValo";
+}
+
+<h2>DeleteValo</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Valo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ValonNimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValonNimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValonTila)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValonTila)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValonMaara)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValonMaara)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Talo.TalonNimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Talo.TalonNimi)
+        </dd>
+        <dd>
+            @Html.HiddenFor(model => model.TaloID)
+        </dd>
+        
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        @Html.ActionLink("Takaisin", "Timo2", new { id = Model.TaloID })
+        <input type="submit" value="Poista" class="btn btn-default" /> 
+
+    </div>
+    }
+</div>

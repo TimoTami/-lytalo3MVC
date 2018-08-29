@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e767e418266b420fbb9a3e4220e64cc9" Name="Diagram1">
+        <EntityTypeShape EntityType="ÄlytaloToinenModel.Sauna" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="ÄlytaloToinenModel.Talo" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="ÄlytaloToinenModel.TaloLampo" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="ÄlytaloToinenModel.Valo" Width="1.5" PointX="3" PointY="7.125" />
+        <AssociationConnector Association="ÄlytaloToinenModel.FK_Sauna_Talo" />
+        <AssociationConnector Association="ÄlytaloToinenModel.FK_TaloLampo_Talo" />
+        <AssociationConnector Association="ÄlytaloToinenModel.FK_Valo_Talo" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
